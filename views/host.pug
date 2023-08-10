@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title=title
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel="stylesheet" href='/style.css')
+  body
+    header.header-host
+      h1='Buzzer Host'
+
+    div.form-container
+      h2.js-active=`${users.length} joined`
+      ol.js-users
+        each user in users
+          li=`${user.name} on Team ${user.team}`
+      br
+      ol.js-buzzes
+        each buzz in buzzes
+          li=`${buzz.name} on Team ${buzz.team}`
+      button.js-activate='Activate buzzer'
+      button.js-deactivate='Deactivate buzzer'
+      button.js-clear='Clear buzzes'
+      button.js-reset.secondary='Reset game'
+
+    script(src='/socket.io/socket.io.js')
+    script(src='/host.js')

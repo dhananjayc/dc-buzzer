@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title=title
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:500,700|Roboto:400,500,700,900")
+    link(rel="stylesheet" href='/style.css')
+  body.js-body
+    header.header
+      h1='Buzzer App'
+
+    div.container
+      form.form-container.view.js-join
+        h2="All set! Let's play!"
+        input(type='text' name='name' placeholder='Your name' required='required')
+        input(type='number' name='team' placeholder='Your team number' required='required')
+        button(type='submit')='Join!'
+
+      div.view.js-joined.hidden
+        h2.js-buzz-info=""
+        div.buzzers
+          button.js-buzzer.buzzer()='Buzz - option 1'
+          button.js-buzzer2.buzzer()='Buzz - option 2'
+          button.js-buzzer3.buzzer()='Buzz - option 3'
+          button.js-buzzer4.buzzer()='Buzz - option 4'
+        p.js-joined-info=""
+
+    script(src='/socket.io/socket.io.js')
+    script(src='/join.js')

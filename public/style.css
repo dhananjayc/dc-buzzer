@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: #1A2634;
+  text-align: center;
+  font-family: 'Merriweather Sans', sans-serif;
+  /* color: white; */
+  /* background-color: #ffffff; */
+  font-weight: 300;
+  /* background-color: #000000; */
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%233d0007' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%234a0017' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23590022' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%2368112d' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23772139' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E"); */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body,
+input,
+button {
+  font-size: 1em;
+}
+
+p {
+  margin: 2em 0;
+}
+
+ol {
+  text-align: left;
+}
+
+li {
+  margin: 0.5em 0;
+}
+
+.header {
+  padding: 5px 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  /* background-color: #222; */
+  border-radius: 15px 15px 0 0;
+  border-bottom: solid 2px #444;
+  justify-content: center;
+}
+.header-host {
+  padding: 5px 10px;
+  text-align: center;
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: #222;
+  /* border-radius: 15px 15px 0 0; */
+  border-bottom: solid 2px #444;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.logo {
+  width: 100%;
+  max-width: 310px;
+  max-height: 120px;
+  padding: 1em 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 80%;
+  padding: 1em;
+  margin: 10% auto;
+}
+
+.form-container {
+  max-width: 500px;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.view button:last-child {
+  margin-bottom: 0;
+}
+
+.buzzer-mode {
+  /* background-color: rgb(58, 63, 115);
+  color: rgb(15, 15, 26); */
+  font-family: 'Merriweather Sans', sans-serif;
+  color: white;
+  background-color: #ffffff;
+  font-weight: 300;
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%233d0007' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%234a0017' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23590022' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%2368112d' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23772139' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+  display: block;
+  padding: 0.8em 1.4em;
+  margin: 1em 0;
+  width: 100%;
+  border-radius: 5px;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"] {
+  border: 1px solid #B8B8B8;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="text"]:active,
+input[type="number"]:active {
+  border-color: #2c4bff;
+  box-shadow: 0 0 0 3px #ABB7FF;
+  outline: none;
+}
+
+button {
+  padding: 1.4em 1.4em;
+  font-size: 1.2em;
+  background-color: #161D99;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgb(22, 29, 153);
+}
+
+button:active {
+  box-shadow: rgb(171, 183, 255) 0px 0px 0px 3px;
+  outline: 0px;
+  transform: translateY(  1px);
+}
+button:focus {
+  box-shadow: 0 0 0 3px #ABB7FF;
+}
+
+.main-image {
+  width: 90%;
+}
+
+.buzzer {
+  height: 10em;
+  font-size: 2em;
+  background-color: rgb(11, 224, 79);
+  color: rgb(18, 30, 102);
+  margin: 8px;
+}
+.buzzer:focus {
+  box-shadow: 0 0 0 3px #ABB7FF;
+}
+.buzzer:hover,
+.buzzer:active {
+  background-color: rgb(171, 63, 63);;
+}
+
+.buzzer-not-ready-mode {
+  color: rgb(8, 7, 6);
+  background-color: rgb(158, 181, 185);
+}
+.buzzer-ready-mode {
+  /* color: rgb(18, 30, 102);
+  background-color: rgb(175, 243, 181); */
+  background-color: rgb(11, 224, 79) !important;
+  color: rgb(18, 30, 102) !important;
+}
+
+.buzzer:disabled,
+.buzzer-disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.buzzers {
+  display: flex;
+}
+
+.buzzed {
+  color: rgb(132, 170, 194);
+  background-color: rgb(223, 27, 27);
+}
+
+/* .secondary {
+  background-color: #fff;
+  color: rgb(16, 21, 78);
+}
+
+.secondary:hover {
+  background-color: rgb(44, 75, 255);
+} */
