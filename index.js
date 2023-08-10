@@ -57,10 +57,10 @@ io.on('connection', (socket) => {
     const minutes = dateObject.getMinutes();
     // current seconds
     const seconds = dateObject.getSeconds();
-    const time = `${hours}:${minutes}:${seconds}`
-    // console.log(time);
+    const milliseconds = dateObject.getMilliseconds();
+    // Actual Time to display on board
+    const time = `${hours}:${minutes}:${seconds}:${milliseconds}`
     if (buzz_active) {
-      // console.log('lets emit buzzes--- ',JSON.stringify(data.buzzes));
       if (data.users.has(user.id)) {
         if (data.buzzes.has(`${user.name}-${user.team}`)) {
           console.log(`Log: ${user.name} already buzzed in!`)

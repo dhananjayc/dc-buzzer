@@ -13,12 +13,12 @@ html
       form.form-container.view.js-join
         h2="All set! Let's play!"
         input(type='text' name='name' placeholder='Your name' required='required')
-        input(type='number' name='team' placeholder='Your team number' required='required')
+        input(type='number' name='team' placeholder='Your team number' min='1' required='required')
         button(type='submit')='Join!'
 
       div.view.js-joined.hidden
         h2.js-buzz-info=""
-        div.buzzers
+        div.btn-group
           button.js-buzzer.buzzer()='Buzz - option 1'
           button.js-buzzer2.buzzer()='Buzz - option 2'
           button.js-buzzer3.buzzer()='Buzz - option 3'

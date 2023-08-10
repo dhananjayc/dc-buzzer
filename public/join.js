@@ -9,8 +9,6 @@ const buzzer4 = document.querySelector('.js-buzzer4')
 const joinedInfo = document.querySelector('.js-joined-info')
 const buzzGroupInfo = document.querySelector('.js-buzz-info')
 
-// const editInfo = document.querySelector('.js-edit')
-
 let user = {}
 
 const getUserInfo = () => {
@@ -51,8 +49,6 @@ const handleBuzzEvent = (buzz , option) => {
   [buzzer, buzzer2, buzzer3, buzzer4].some((btn, index) => {
     isBuzzed = btn.classList.contains('buzzed')
     optionSelected = index + 1;
-    // console.log(optionSelected, ':: ',btn.classList , ' isBuzzed:: ',isBuzzed); 
-    // btn.classList.remove('buzzed') // If want to allow users to re-select
     return isBuzzed;
   })
   if (isBuzzed) {
@@ -63,13 +59,6 @@ const handleBuzzEvent = (buzz , option) => {
   buzz.classList.add('buzzed')
   socket.emit('buzz', { user, option })
 }
-
-// editInfo.addEventListener('click', () => {
-//   joined.classList.add('hidden')
-//   form.classList.remove('hidden')
-//   body.classList.remove('buzzer-mode')
-//   // socket.emit('remove', user)
-// })
 
 const resetBuzzers = () => {
   [buzzer, buzzer2, buzzer3, buzzer4].forEach((btn) => {
@@ -89,13 +78,11 @@ const updateBuzzers = (isActivate) => {
 }
 
 socket.on('activateBuzzes', (isActivate) => {
-  // console.log('Activate Buzzers at client side?? ', isActivate);
   resetBuzzers();
   updateBuzzers(isActivate);
 })
 
 socket.on('clearBuzzes', () => {
-  // console.log('Clear Buzzers at client side?? ');
   resetBuzzers();
 })
 

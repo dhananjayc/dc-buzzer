@@ -23,14 +23,9 @@ socket.on('buzzes', (buzzes) => {
 })
 
 socket.on('members', (members) => {
-  // console.log('members?? ', JSON.stringify(members));
   userList.innerHTML = members
-    // .map(buzz => {
-    //   const p = buzz.split('-')
-    //   return { name: p[0], team: p[1] }
-    // })
-    // .map(user => `${user}`)
-    // .join('')
+    .map(user => `<li>${user}</li>`)
+    .join('')
 })
 
 clear.addEventListener('click', () => {

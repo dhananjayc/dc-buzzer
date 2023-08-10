@@ -9,18 +9,24 @@ html
       h1='Buzzer Host'
 
     div.form-container
+      div.btn-group
+        button.btn.js-activate='Activate'
+        button.btn.js-deactivate='Deactivate'
+      div.btn-group
+        button.btn.js-clear='Clear buzzes'
+        button.btn.js-reset.secondary='Reset game'
+      hr
+      br
+      h2=`${buzzes.length ? `${buzzes.length} Buzzed!!` : ''}`
+      ol.js-buzzes
+        each buzz in buzzes
+          li=`${buzz.name} on Team ${buzz.team}`
+      br
+      hr
       h2.js-active=`${users.length} joined`
       ol.js-users
         each user in users
           li=`${user.name} on Team ${user.team}`
-      br
-      ol.js-buzzes
-        each buzz in buzzes
-          li=`${buzz.name} on Team ${buzz.team}`
-      button.js-activate='Activate buzzer'
-      button.js-deactivate='Deactivate buzzer'
-      button.js-clear='Clear buzzes'
-      button.js-reset.secondary='Reset game'
 
     script(src='/socket.io/socket.io.js')
     script(src='/host.js')

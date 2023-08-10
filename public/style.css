@@ -189,8 +189,21 @@ button:focus {
   color: #666666;
 }
 
-.buzzers {
+.btn-group {
   display: flex;
+}
+
+.btn {
+  display: flex;
+  font-size: 1.2em;
+  background-color: #66BBFF;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  height: 10px;
+  width: 50%;
+  align-items: center;
+  margin: 2px;
 }
 
 .buzzed {
