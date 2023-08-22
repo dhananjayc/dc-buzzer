@@ -214,8 +214,9 @@ button:focus {
 /* .secondary {
   background-color: #fff;
   color: rgb(16, 21, 78);
-}
-
-.secondary:hover {
-  background-color: rgb(44, 75, 255);
 } */
+
+.secondary,
+.secondary:hover {
+  background-color: rgb(184, 71, 71);
+}

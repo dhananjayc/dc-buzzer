@@ -23,23 +23,21 @@ socket.on('buzzes', (buzzes) => {
 })
 
 socket.on('members', (members) => {
-  userList.innerHTML = members
-    .map(user => `<li>${user}</li>`)
-    .join('')
+  userList.innerHTML = members.map(user => `<li>${user}</li>`).join('')
 })
 
 clear.addEventListener('click', () => {
-  socket.emit('clear')
+  socket.emit('clear') // clear buzzers for all players
 })
 
 reset.addEventListener('click', () => {
-  socket.emit('reset')
+  socket.emit('reset') // reset game and kick out all players
 })
 
 activate.addEventListener('click', () => {
-  socket.emit('activate')
+  socket.emit('activate') // enable buzzers for all players
 })
 
 deactivate.addEventListener('click', () => {
-  socket.emit('deactivate')
+  socket.emit('deactivate') // disable buzzers for all players
 })

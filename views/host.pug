@@ -9,12 +9,12 @@ html
       h1='Buzzer Host'
 
     div.form-container
+      div.btn-group <!-- DC: Probably we don't need this but keeping for future enhancement -->
+        button.btn.js-activate='Activate new joiners'
+        button.btn.js-deactivate='Deactivate buzzes'
       div.btn-group
-        button.btn.js-activate='Activate'
-        button.btn.js-deactivate='Deactivate'
-      div.btn-group
-        button.btn.js-clear='Clear buzzes'
-        button.btn.js-reset.secondary='Reset game'
+        button.btn.js-clear.buzzer-ready-mode='Clear buzzes'
+        button.btn.js-reset.secondary='Delete game'
       hr
       br
       h2=`${buzzes.length ? `${buzzes.length} Buzzed!!` : ''}`

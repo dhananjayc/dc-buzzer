@@ -23,6 +23,25 @@ const saveUserInfo = () => {
   localStorage.setItem('user', JSON.stringify(user))
 }
 
+const isBuzzAllowed = () =>  JSON.parse(localStorage.getItem('ready'));
+
+const updateJoinForm = (isReset = false) => {
+  if (isReset) {
+    // reset game.. lets display JOIN form
+    form.classList.remove('hidden')
+    joined.classList.add('hidden')
+    body.classList.remove('buzzer-mode')
+  } else {
+    // Joined.. lets play
+    joinedInfo.innerText = `${user.name} on Team ${user.team}`
+    buzzGroupInfo.innerText = `Hey ${user.name}, Please Buzz with correct option -"`
+    form.classList.add('hidden')
+    joined.classList.remove('hidden')
+    body.classList.add('buzzer-mode')
+    updateBuzzers(false);
+  }
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   user.name = form.querySelector('[name=name]').value
@@ -32,27 +51,24 @@ form.addEventListener('submit', (e) => {
       user.id = Math.floor(Math.random() * new Date())
     }
     socket.emit('join', user)
+    localStorage.setItem('ready', true);
     saveUserInfo()
-    joinedInfo.innerText = `${user.name} on Team ${user.team}`
-    buzzGroupInfo.innerText = `Hey ${user.name}, Please Buzz with correct option -"`
-    form.classList.add('hidden')
-    joined.classList.remove('hidden')
-    body.classList.add('buzzer-mode')
-    updateBuzzers(false);
+    updateJoinForm()
   }
 })
 
 const handleBuzzEvent = (buzz , option) => {
+  if (!isBuzzAllowed()) { return; }
   let isBuzzed = false;
   let optionSelected;
-  console.log("buzzed!!-> option - ", option);
+  // console.log(user.name, " buzzed!! -> option - ", option);
   [buzzer, buzzer2, buzzer3, buzzer4].some((btn, index) => {
     isBuzzed = btn.classList.contains('buzzed')
     optionSelected = index + 1;
     return isBuzzed;
   })
   if (isBuzzed) {
-    console.log(`You already buzzed with option ${optionSelected}!! Wait for buzzer reset!`);
+    // console.log(`You already buzzed with option ${optionSelected}!! Wait for buzzer reset!`);
     alert(`Heyy ${user.name}!!! You already buzzed with option ${optionSelected}!! Plz Wait for buzzer reset!`);
     return;
   }
@@ -76,16 +92,26 @@ const updateBuzzers = (isActivate) => {
     }
   })
 }
+// Socket listeners
+socket.on('resetGame', () => {
+  resetBuzzers();
+  updateBuzzers(false);
+  localStorage.clear();
+  user = {};
+  updateJoinForm(true)
+  localStorage.setItem('ready', false);
+})
 
 socket.on('activateBuzzes', (isActivate) => {
   resetBuzzers();
-  updateBuzzers(isActivate);
+  updateBuzzers(isActivate && isBuzzAllowed());
 })
 
 socket.on('clearBuzzes', () => {
   resetBuzzers();
 })
 
+// Buzz button handlers
 buzzer.addEventListener('click', (e) => {
   handleBuzzEvent(buzzer, 1)
 })

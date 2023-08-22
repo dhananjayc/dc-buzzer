@@ -82,18 +82,18 @@ io.on('connection', (socket) => {
     data.buzzes.clear()
     io.emit('buzzes', [...data.buzzes])
     io.emit('activateBuzzes', true)
-    console.log(`Log: Clear buzzes`)
+    buzz_active = true
+    console.log(`Debug: Clear buzzes and Activate buzzer from host ${socket.id}`)
   })
 
   socket.on('reset', () => {
     data.users.clear()
     data.members.clear()
     data.buzzes.clear()
-    console.log([...data.users].length)
     io.emit('active', [...data.users].length)
     io.emit('buzzes', [...data.buzzes])
     io.emit('members', [...data.members])
-    io.emit('activateBuzzes', false)
+    io.emit('resetGame', false)
     console.log(`Log: Reset game`)
   })
 
