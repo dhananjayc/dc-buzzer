@@ -42,6 +42,14 @@ const updateJoinForm = (isReset = false) => {
   }
 }
 
+const buzzSound = () => {
+  if (body.querySelector('[name=sound]').checked) {
+    const buzzAudio = new Audio('./assets/buzz-sound-3.mp3');
+    // play buzz sound if not muted
+    buzzAudio.play();
+  }
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   user.name = form.querySelector('[name=name]').value
@@ -74,6 +82,7 @@ const handleBuzzEvent = (buzz , option) => {
   }
   buzz.classList.add('buzzed')
   socket.emit('buzz', { user, option })
+  buzzSound();
 }
 
 const resetBuzzers = () => {

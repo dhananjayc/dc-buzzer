@@ -7,6 +7,22 @@ const deactivate = document.querySelector('.js-deactivate')
 const clear = document.querySelector('.js-clear')
 const reset = document.querySelector('.js-reset')
 const buzzer = document.querySelector('.js-buzzer')
+const buzzedAlarm = document.querySelector('.buzzed')
+
+const buzzAudio = new Audio('/assets/buzz-sound-2.mp3');
+let soundOn = true;
+
+const toggleSound = (img) => {
+  soundOn = !soundOn;
+  img.src= soundOn ? "/assets/speaker_on.png" : "/assets/speaker_off.png";
+}
+
+socket.on('buzzSound', () => {
+  if (soundOn) {
+    // play buzz sound if not muted
+    buzzAudio.play();
+  }
+})
 
 socket.on('active', (numberActive) => {
   active.innerText = `${numberActive} member/s joined`
@@ -18,7 +34,8 @@ socket.on('buzzes', (buzzes) => {
       const p = buzz.split('-')
       return { name: p[0], team: p[1], time: p[2], option: p[3] }
     })
-    .map(user => `<li><b>${user.name}</b> from <b>Team ${user.team}</b> Selected <b>option - ${user.option} </b> on time - ${user.time}</li>`)
+    // .map(user => `<li><b>${user.name}</b> from <b>Team ${user.team}</b> Selected <b>option - ${user.option} </b> on time - ${user.time}</li>`)
+    .map(user => `<li><b>${user.name}</b> - <b>Team ${user.team}</b> Selected <b>option - ${user.option} </b> on time - <i> ${user.time}</i></li>`)
     .join('')
 })
 

@@ -17,13 +17,17 @@ html
         button(type='submit')='Join!'
 
       div.view.js-joined.hidden
-        h2.js-buzz-info=""
+        h1.js-buzz-info=""
         div.btn-group
           button.js-buzzer.buzzer()='Buzz - option 1'
           button.js-buzzer2.buzzer()='Buzz - option 2'
           button.js-buzzer3.buzzer()='Buzz - option 3'
           button.js-buzzer4.buzzer()='Buzz - option 4'
         p.js-joined-info=""
+        h2.dc="Buzz sound : "
+          label.switch
+            input(name='sound' type='checkbox' checked='')
+            span.slider.round
 
     script(src='/socket.io/socket.io.js')
     script(src='/join.js')

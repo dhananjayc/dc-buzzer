@@ -66,6 +66,9 @@ io.on('connection', (socket) => {
           console.log(`Log: ${user.name} already buzzed in!`)
         } else {
           data.buzzes.add(`${user.name}-${user.team}-${time}-${option}`)
+          if ([...data.buzzes].length < 2 ) {
+            io.emit('buzzSound')
+          }
           io.emit('buzzes', [...data.buzzes])
           // console.log(`DC ? Log: ${[...data.buzzes]} buzzed so far!`)
           console.log(`DC ? Log: ${user.name} buzzed ${option}! on time - ${time}`)
@@ -93,7 +96,7 @@ io.on('connection', (socket) => {
     io.emit('active', [...data.users].length)
     io.emit('buzzes', [...data.buzzes])
     io.emit('members', [...data.members])
-    io.emit('resetGame', false)
+    io.emit('resetGame')
     console.log(`Log: Reset game`)
   })
 
